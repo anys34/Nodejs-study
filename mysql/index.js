@@ -9,8 +9,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 const connection = mysql.createConnection({
   user: "root",
-  password: "",
-  database: "test",
+  password: "mysql",
+  database: "parkinglot",
+  host: "svc.sel4.cloudtype.app",
+  port: 32676,
 });
 
 connection.connect();
