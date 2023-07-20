@@ -4,16 +4,20 @@ class Spot_Info extends Sequelize.Model {
   static initiate(sequelize) {
     Spot_Info.init(
       {
-        Spot: {
+        id: {
           type: Sequelize.INTEGER,
+          primaryKey: true,
+          autoIncrement: true,
+        },
+        Spot: {
+          type: Sequelize.STRING(20),
           unique: true,
         },
         Parking: {
           type: Sequelize.BOOLEAN,
-          unique: true,
         },
         ParkingNum: {
-          type: Sequelize.STRING(20),
+          type: Sequelize.STRING(50),
         },
       },
       {
@@ -32,10 +36,7 @@ class Spot_Info extends Sequelize.Model {
   static associate(db) {
     db.Spot_Info.hasOne(db.Car_Info, {
       foreignKey: "Spot",
-    });
-
-    db.Spot_Info.hasOne(db.Car_Info, {
-      foreignKey: "Parking",
+      sourceKey: "Spot"
     });
   }
 }

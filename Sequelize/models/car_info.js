@@ -5,10 +5,23 @@ class Car_Info extends Sequelize.Model {
     Car_Info.init(
       {
         Time: {
-          type: Sequelize.STRING(50),
+          type: Sequelize.INTEGER,
         },
         Money: {
           type: Sequelize.INTEGER,
+        },
+        EnterTime: {
+          type: Sequelize.DATE,
+          defaultValue: Sequelize.NOW,
+        },
+        ExitTime: {
+          type: Sequelize.DATE,
+        },
+        CarNum: {
+          type: Sequelize.STRING(50),
+        },
+        Spot: {
+          type: Sequelize.STRING(20),
         },
       },
       {
@@ -23,14 +36,9 @@ class Car_Info extends Sequelize.Model {
   }
 
   static associate(db) {
-    db.Car_Info.belongsTo(db.User, {
-      foreignKey: "CarNum",
-    });
     db.Car_Info.belongsTo(db.Spot_Info, {
       foreignKey: "Spot",
-    });
-    db.Car_Info.belongsTo(db.Spot_Info, {
-      foreignKey: "Parking",
+      targetKey: "Spot",
     });
   }
 }

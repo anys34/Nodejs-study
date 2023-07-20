@@ -4,23 +4,22 @@ class User extends Sequelize.Model {
   static initiate(sequelize) {
     User.init(
       {
-        Id: {
+        id: {
           type: Sequelize.INTEGER,
           primaryKey: true,
           autoIncrement: true,
         },
         UserName: {
-            type: Sequelize.STRING(50),
+          type: Sequelize.STRING(50),
         },
         Password: {
           type: Sequelize.STRING(255),
         },
         CarNum: {
-          type: Sequelize.STRING(20),
-          unique: true,
+          type: Sequelize.STRING(50),
         },
-        Enter: {
-          type: Sequelize.BOOLEAN,
+        AccountNum: {
+          type: Sequelize.STRING(50),
         },
       },
       {
@@ -36,11 +35,7 @@ class User extends Sequelize.Model {
     );
   }
 
-  static associate(db) {
-    db.User.hasOne(db.Car_Info, {
-        foreignKey: "CarNum"
-      });
-  }
+  static associate(db) {}
 }
 
 module.exports = User;

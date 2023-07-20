@@ -1,12 +1,17 @@
-const express = require('express');
-const User = require('../models/user');
+const express = require("express");
+const Car_Info = require("../models/car_info");
 
 const router = express.Router();
 
-router.get('/', async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
-    const users = await User.findAll();
-    res.render('sequelize', { users });
+    const cars = await Car_Info.findAll({
+      where: {
+        CarNum: "12가1234"
+      }
+    });
+    res.render('select', { cars });
+    // res.send(car);
   } catch (err) {
     console.error(err);
     next(err);
