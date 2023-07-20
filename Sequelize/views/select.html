@@ -6,6 +6,13 @@
     <title>Document</title>
 </head>
 <body>
+    <form id="car-form">
+        <fieldset>
+          <legend>자동차 조회</legend>
+          <div><input id="carnum" type="text" placeholder="차 번호"></div>
+          <button type="submit">등록</button>
+        </fieldset>
+      </form>
     <table>
         <thead>
         <tr>
@@ -24,5 +31,7 @@
           {% endfor %}
         </tbody>
       </table>  
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/select.js"></script>
 </body>
 </html>

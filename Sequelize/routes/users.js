@@ -5,7 +5,7 @@ const Comment = require("../models/spot_info");
 const router = express.Router();
 
 router
-  .route("/")
+  .route("/fsdf")
   .get(async (req, res, next) => {
     try {
       const users = await User.findAll();
