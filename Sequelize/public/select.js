@@ -2,6 +2,7 @@ async function getCar() {
   try {
     const res = await axios.get("/car");
     const cars = res.data;
+    console.log("sdfsdfds");
     console.log(cars + "입니다.");
   } catch (err) {
     console.error(err);
