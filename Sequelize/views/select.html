@@ -9,16 +9,41 @@
     <form id="car-form">
       <fieldset>
         <legend>자동차 조회</legend>
-        <div><input id="carnum" type="text" placeholder="차 번호" /></div>
+        <div>
+          <input id="carnum" type="text" placeholder="차 번호" required />
+        </div>
         <button type="submit" onclick="location.href='car'">조회</button>
       </fieldset>
     </form>
+
+    <form id="signup-form">
+      <fieldset>
+        <legend>회원가입</legend>
+        <div>
+          <input id="username" type="text" placeholder="이름" required />
+        </div>
+        <div>
+          <input
+            id="password"
+            type="password"
+            placeholder="비밀번호"
+            required
+          />
+        </div>
+        <div>
+          <input id="carnum" type="text" placeholder="차 번호" required />
+        </div>
+        <button type="submit" onclick="location.href='signup'">회원가입</button>
+      </fieldset>
+    </form>
+
     <table>
       <thead>
         <tr>
           <th>차번호</th>
           <th>시간</th>
           <th>돈</th>
+          <th>장소</th>
         </tr>
       </thead>
       <tbody>
@@ -27,6 +52,7 @@
           <td>{{car.CarNum}}</td>
           <td>{{car.Time}}</td>
           <td>{{car.Money}}</td>
+          <td>{{car.Spot}}</td>
         </tr>
         {% endfor %}
       </tbody>

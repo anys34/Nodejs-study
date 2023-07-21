@@ -5,8 +5,7 @@ const router = express.Router();
 var cars;
 
 router.get("/", async (req, res, next) => {
-  console.log(cars);
-  res.render('select', { cars });
+  res.render('show', { cars });
 });
 
 router.post("/", async (req, res, next) => {
@@ -17,14 +16,6 @@ router.post("/", async (req, res, next) => {
       CarNum: req.body.carnum,
     },
   });
-  try {
-    // console.log(cars);
-    console.log("dsfsdfds");
-    res.json(cars);
-  } catch (err) {
-    console.error(err);
-    next(err);
-  }
 });
 
 module.exports = router;

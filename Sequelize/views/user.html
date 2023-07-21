@@ -6,30 +6,20 @@
     <title>Document</title>
   </head>
   <body>
-    <script>
-      window.onload = function () {
-        setTimeout(function () {
-          location.reload();
-        }, 1000);
-      };
-    </script>
-
     <table>
       <thead>
         <tr>
+          <th>이름</th>
+          <th>비밀번호</th>
           <th>차번호</th>
-          <th>시간</th>
-          <th>돈</th>
-          <th>장소</th>
         </tr>
       </thead>
       <tbody>
-        {% for car in cars %}
+        {% for users in user %}
         <tr>
-          <td>{{car.CarNum}}</td>
-          <td>{{car.Time}}</td>
-          <td>{{car.Money}}</td>
-          <td>{{car.Spot}}</td>
+          <td>{{users.UserName}}</td>
+          <td>{{users.Password}}</td>
+          <td>{{users.CarNum}}</td>
         </tr>
         {% endfor %}
       </tbody>
