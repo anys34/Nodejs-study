@@ -7,7 +7,7 @@ router.get("/", async (req, res, next) => {
   res.render("login");
 });
 
-router.post("/process", async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   const user = await User.findAll({
     where: {
       UserName: req.body.username,
@@ -17,16 +17,11 @@ router.post("/process", async (req, res, next) => {
 
   if (user.length > 0) {
     console.log("로그인 성공");
-    res.redirect("/login/alert");
+    res.send("success");
   } else {
     console.log("로그인 실패");
-    res.redirect("/login");
+    res.status(401).send("failure");
   }
-});
-
-router.get("/alert", async (req, res, next) => {
-  res.send("<script>alert('로그인 성공');location.href='/';</script>");
-    // res.redirect('/');
 });
 
 module.exports = router;
