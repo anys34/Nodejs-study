@@ -15,11 +15,21 @@ router.get("/", async (req, res, next) => {
 });
 
 router.post("/", async (req, res, next) => {
-  const user = await User.create({
-    UserName: req.body.username,
-    Password: req.body.password,
-    CarNum: req.body.carnum,
+  const user = await User.findAll({
+    where: {
+      CarNum: req.body.carnum,
+    },
   });
+
+  if (user.length > 0) {
+    res.send("fail");
+  } else {
+    await User.create({
+      UserName: req.body.username,
+      Password: req.body.password,
+      CarNum: req.body.carnum,
+    });
+  }
 });
 
 module.exports = router;
