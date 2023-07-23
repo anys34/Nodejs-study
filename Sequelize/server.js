@@ -1,4 +1,5 @@
 const express = require("express");
+const session = require("express-session");
 const path = require("path");
 const morgan = require("morgan");
 const nunjucks = require("nunjucks");
@@ -8,6 +9,7 @@ const indexRouter = require("./routes/index");
 const carRouter = require("./routes/cars");
 const signupRouter = require("./routes/signup");
 const loginRouter = require("./routes/login");
+const sessionRouter = require("./routes/profile");
 
 const app = express();
 app.set("port", process.env.PORT || 3001);
@@ -29,11 +31,19 @@ app.use(morgan("dev"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(
+  session({
+    secret: "code",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
 app.use("/", indexRouter);
 app.use("/car", carRouter);
 app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
+app.use("/profile", sessionRouter);
 
 app.use((req, res, next) => {
   const error = new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
