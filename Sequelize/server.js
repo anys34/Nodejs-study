@@ -10,6 +10,7 @@ const carRouter = require("./routes/cars");
 const signupRouter = require("./routes/signup");
 const loginRouter = require("./routes/login");
 const sessionRouter = require("./routes/profile");
+const accountRouter = require("./routes/account");
 
 const app = express();
 app.set("port", process.env.PORT || 3001);
@@ -44,6 +45,7 @@ app.use("/car", carRouter);
 app.use("/signup", signupRouter);
 app.use("/login", loginRouter);
 app.use("/profile", sessionRouter);
+app.use("/account", accountRouter);
 
 app.use((req, res, next) => {
   const error = new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
