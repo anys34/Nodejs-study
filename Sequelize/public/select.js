@@ -44,6 +44,9 @@ document.getElementById("account-form").addEventListener("submit", async (e) => 
         alert("로그인을 해주시기 바랍니다.");
         location.href = "/login";
       }
+      else if (data === "notcarnum") {
+        alert("자동차 번호가 다릅니다.")
+      }
     } catch (err) {
       console.error(err);
     }
